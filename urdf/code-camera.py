@@ -51,7 +51,7 @@ def main():
 
 			cv2.waitKey(1)
 	except KeyboardInterrupt:
-		simulation_manager.stopSimulation(client)
+		simulation_manager.stopSimulation(client_id)
 		cv2.destroyAllWindows()
 
 if __name__ == "__main__":

@@ -1,12 +1,11 @@
 from qibullet import SimulationManager
-from qibullet import RomeoVirtual
 from qibullet import PepperVirtual
-from qibullet import NaoVirtual
 import numpy as np
 import time
 import pybullet as p
 import cv2
 import math
+from poseDetection import PoseDetection
 
 def euler_to_quaternion(yaw, pitch, roll):
 
@@ -29,16 +28,33 @@ def main():
 	p.connect(p.DIRECT)
 
 	# Loading cube
-	cube_visual = p.createVisualShape(p.GEOM_BOX, halfExtents=[0.125,0.125,0.125])
-	cube_collision = p.createCollisionShape(p.GEOM_BOX, halfExtents=[0.25,0.25,0.25])
-	cube_body = p.createMultiBody( baseMass=0, baseCollisionShapeIndex=cube_collision,baseVisualShapeIndex=cube_visual, basePosition = [2,1, 0.725])
+	# cube_visual = p.createVisualShape(p.GEOM_BOX, halfExtents=[0.125,0.125,0.125])
+	# cube_collision = p.createCollisionShape(p.GEOM_BOX, halfExtents=[0.25,0.25,0.25])
+	# cube_body = p.createMultiBody( baseMass=0, baseCollisionShapeIndex=cube_collision,baseVisualShapeIndex=cube_visual, basePosition = [2,1, 0.725])
 
 	# Loading 3D objects
 	p.loadURDF("./urdf/table/table.urdf", basePosition = [1,0,0], baseOrientation = euler_to_quaternion(math.pi/2,0,0), globalScaling = 1)
 
 	p.setGravity(0,0,-10)
-	pepper.moveTo(3,3,5,frame=2,_async=False)
+	
+	# Subscrbing to cameras
+	# handle = pepper.subscribeCamera(PepperVirtual.ID_CAMERA_BOTTOM)
+	handle2 = pepper.subscribeCamera(PepperVirtual.ID_CAMERA_TOP)
+	# handle3 = pepper.subscribeCamera(PepperVirtual.ID_CAMERA_DEPTH)
 
+	pd = PoseDetection()
+	try:
+		while True:
+			img = pepper.getCameraFrame(handle2)
+			img = pd.getPose(img)
+			cv2.imshow("top camera", img)
+			cv2.waitKey(1)
+
+
+
+	except KeyboardInterrupt:
+		simulation_manager.stopSimulation(client_id)
+		cv2.destroyAllWindows()
 
 if __name__ == "__main__":
 	main()
