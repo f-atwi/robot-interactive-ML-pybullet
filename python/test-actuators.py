@@ -23,9 +23,9 @@ def main():
 	cube_body = p.createMultiBody( baseMass=0, baseCollisionShapeIndex=cube_collision,baseVisualShapeIndex=cube_visual, basePosition = [2,1, 0.725])
 
 	# Loading 3D objects
-	p.loadURDF("./urdf/table/table.urdf", basePosition = [2,1,0], globalScaling = 1)
-	p.loadURDF("./urdf/chair/chair.urdf", basePosition = [3,1,0], globalScaling = 1)
-	p.loadURDF("./urdf/chair/chair.urdf", basePosition = [4,1,0], globalScaling = 1)
+	p.loadURDF("../urdf/table/table.urdf", basePosition = [2,1,0], globalScaling = 1)
+	p.loadURDF("../urdf/chair/chair.urdf", basePosition = [3,1,0], globalScaling = 1)
+	p.loadURDF("../urdf/chair/chair.urdf", basePosition = [4,1,0], globalScaling = 1)
 
 	# # Posture
 	# pepper.goToPosture("Crouch", 0.6)
@@ -45,8 +45,8 @@ def main():
 	# while True:
 	# 	for joint_parameter in joint_parameters:pepper.setAngles(joint_parameter[1],p.readUserDebugParameter(joint_parameter[0]), 1.0)	
 
-	# Motion
-	pepper.moveTo(3,3,0,frame=2,_async=False)
+	# # Motion
+	# pepper.moveTo(3,3,0,frame=2,_async=False)
 
 
 if __name__ == "__main__":

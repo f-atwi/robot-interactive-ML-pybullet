@@ -23,9 +23,9 @@ def main():
 	cube_body = p.createMultiBody( baseMass=0, baseCollisionShapeIndex=cube_collision,baseVisualShapeIndex=cube_visual, basePosition = [2,1, 0.725])
 
 	# Loading 3D objects
-	p.loadURDF("./urdf/table/table.urdf", basePosition = [2,1,0], globalScaling = 1)
-	p.loadURDF("./urdf/chair/chair.urdf", basePosition = [3,1,0], globalScaling = 1)
-	p.loadURDF("./urdf/chair/chair.urdf", basePosition = [4,1,0], globalScaling = 1)
+	p.loadURDF("../urdf/table/table.urdf", basePosition = [2,1,0], globalScaling = 1)
+	p.loadURDF("../urdf/chair/chair.urdf", basePosition = [3,1,0], globalScaling = 1)
+	p.loadURDF("../urdf/chair/chair.urdf", basePosition = [4,1,0], globalScaling = 1)
 
 	# Laser 
 	pepper.showLaser(True)
