@@ -32,3 +32,6 @@ Uses pickle to save the model as ```model.pkl```
 
 ### immitate.ipynb
 Deploys the model on the first Pepper robot to try to mimic the second robot.
+
+## The dataset
+A dataset with 50,000 datapoints have been previously generated. The dataset is named ```dataset50000.npz```
