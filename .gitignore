@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+python/dataset_backup/dataset10000.npz
+python/dataset_backup/dataset30000.npz
+python/dataset_backup/dataset50000.npz
